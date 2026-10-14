@@ -1,0 +1,35 @@
+# ---- 本机数据 / 密钥（绝不入库）----
+*.log
+*.lnk
+*.local
+cloud.json
+config.json
+
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# ---- 打包产物 ----
+build/
+release/
+dist/
+stage/
+
+# ---- 测试与临时 ----
+_shell_storage/
+tools/_*.png
+tools/_*.log
+e2e_trace.log
+window_events.log
+
+# ---- WorkBuddy 工作区 ----
+.workbuddy/
+.wbapp_*.genie
+
+# ---- 其他 ----
+node_modules/
+.DS_Store
+Thumbs.db

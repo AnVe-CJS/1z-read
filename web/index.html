@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>1z read</title>
+<link rel="icon" href="favicon.ico?v=3" />
+<link rel="apple-touch-icon" href="assets/icon-180.png?v=3" />
+<link rel="stylesheet" href="styles.css?v=3" />
+</head>
+<body>
+
+<aside id="drawer" class="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <span class="drawer-title">会话</span>
+    <button id="btnNewSession" class="drawer-new" type="button">＋ 新建</button>
+  </div>
+  <div id="sessionList" class="session-list"></div>
+  <div class="drawer-foot">
+    <button id="btnClearAll" class="link-btn danger" type="button">清空全部会话</button>
+  </div>
+</aside>
+<div id="drawerMask" class="drawer-mask hidden"></div>
+
+<header class="topbar pywebview-drag-region">
+  <div class="topbar-left">
+    <button id="btnDrawer" class="icon-btn" title="会话列表">☰</button>
+    <div class="brand">
+      <img class="brand-mark" src="assets/icon-64.png?v=3" alt="" draggable="false" />
+      <span class="brand-name">1z read</span>
+    </div>
+    <span id="bridgeDot" class="bridge-dot hidden" title=""></span>
+  </div>
+  <div class="topbar-actions">
+    <select id="modelSelect" class="model-select" title="选择模型" disabled>
+      <option>加载中…</option>
+    </select>
+    <button id="btnNew" class="icon-btn" title="重新解析当前选中内容">重来</button>
+    <button id="btnOpen" class="icon-btn" title="在新标签页打开">↗</button>
+    <button id="btnClose" class="icon-btn hidden" title="关闭面板">✕</button>
+    <div id="lzr-winctl" class="win-ctl hidden">
+      <button type="button" data-a="min" title="最小化">─</button>
+      <button type="button" data-a="max" title="最大化 / 还原">▢</button>
+      <button type="button" data-a="close" title="关闭">✕</button>
+    </div>
+  </div>
+</header>
+
+<section id="selectionCard" class="selection-card hidden">
+  <div class="selection-head">
+    <span class="selection-label">选中内容</span>
+    <span id="selectionSource" class="selection-source"></span>
+    <button id="btnToggleText" class="link-btn">展开</button>
+  </div>
+  <blockquote id="selectionText" class="selection-text"></blockquote>
+</section>
+
+<main id="messages" class="messages" aria-live="polite"></main>
+
+<div id="emptyState" class="empty-state hidden">
+  <div class="empty-icon">✦</div>
+  <h2>选中一段文字，或直接在下面输入</h2>
+  <p>桌面助手：在任意软件里选中文字，稍等片刻点旁边弹出的小气泡，会自动开一个新会话。</p>
+  <p>浏览器里：划选文字后点旁边出现的「解析」按钮。</p>
+  <p>也可以什么都不选，直接把问题打进下面的输入框。</p>
+</div>
+
+<footer class="composer">
+  <div id="quickChips" class="quick-chips"></div>
+  <div class="input-row">
+    <textarea id="input" rows="1" placeholder="继续提问，或直接输入你的问题…（Enter 发送，Shift+Enter 换行）"></textarea>
+    <button id="btnSend" class="send-btn" disabled>发送</button>
+    <button id="btnStop" class="stop-btn hidden">停止</button>
+  </div>
+  <div class="hint-row">
+    <span id="statusLine" class="status-line"></span>
+    <span class="powered">由 WorkBuddy 云服务提供模型能力</span>
+  </div>
+</footer>
+
+<script src="vendor/workbuddy-cloud-sdk.global.js"></script>
+<script src="app.js?v=8"></script>
+</body>
+</html>

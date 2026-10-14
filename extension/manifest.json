@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "划词解析助手",
+  "version": "1.0.0",
+  "description": "用鼠标选中网页上的任意文字，就地弹出 AI 解析，并可继续追问。",
+  "minimum_chrome_version": "111",
+
+  "permissions": ["storage"],
+  "host_permissions": ["https://text-select-ai.app.workbuddy.host/*"],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "exclude_matches": ["https://text-select-ai.app.workbuddy.host/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    },
+    {
+      "matches": ["https://text-select-ai.app.workbuddy.host/*"],
+      "js": ["app-relay.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    },
+    {
+      "matches": ["https://text-select-ai.app.workbuddy.host/*"],
+      "js": ["app-unlock.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    }
+  ],
+
+  "action": {
+    "default_title": "划词解析助手（选中文字后会出现解析按钮）",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
